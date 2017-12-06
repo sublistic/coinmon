@@ -11,9 +11,9 @@ const list = val => val.split(',')
 program
   .version('0.0.1a')
   .option('-c, --convert [currency]', 'Convert to your fiat currency', 'usd')
+  .option('-u, --usd', 'Display USD in addition to your fiat currency', true)
   .option('-f, --find [symbol]', 'Find specific coin data with coin symbol (can be a comma seperated list)', list, [])
   .option('-t, --top [index]', 'Show the top coins ranked from 1 - [index] according to the market cap', null)
-  .option('-H, --humanize [enable]', 'Show market cap as a humanized number, default true', true)
   .parse(process.argv);
 
 const convert = program.convert.toUpperCase()
@@ -21,6 +21,7 @@ const availableCurrencies = ['USD', 'AUD', 'BRL', 'CAD', 'CHF', 'CLP', 'CNY', 'C
 if (availableCurrencies.indexOf(convert) === -1) {
   return console.log('We cannot convert to your fiat currency.'.red)
 }
+const usd = program.usd == true ? 'USD' : ''
 const find = program.find
 const top = !isNaN(program.top) && +program.top > 0 ? +program.top : (find.length > 0 ? 1500 : 10)
 const humanizeIsEnabled = program.humanize !== 'false'
@@ -42,8 +43,7 @@ const table = new Table({
     'right-mid': '',
     'middle': ''
   },
-  head: ['Rank', 'Coin', `Price (${convert})`, 'Change (24H)', 'Change (1H)', `Market Cap (${convert})`].map(title => title.yellow),
-  colWidths: [6, 14, 15, 15, 15, 20]
+  head: ['', `${convert}`, `${usd}`, ' 7D', ' 24H', ' 1H'].map(title => title.gray),
 });
 
 const spinner = ora('Loading data').start();
@@ -69,16 +69,14 @@ axios.get(sourceUrl)
       const change24h = percentChange24h? (percentChange24h > 0 ? ` ${textChange24h}` : textChange24h) : 'NA'
       const percentChange1h = record.percent_change_1h
       const textChange1h = `${percentChange1h}%`
-      const marketCap = record[`market_cap_${convert}`.toLowerCase()];
-      const displayedMarketCap = humanizeIsEnabled ? humanize.compactInteger(marketCap, 3) : marketCap;
       const change1h = percentChange1h ? (percentChange1h > 0 ? ` ${textChange1h}` : textChange1h) : 'NA'
       return [
-        record.rank,
         symbol,
         record[`price_${convert}`.toLowerCase()],
+        priceusd,
+        change7d,
         change24h,
-        change1h,
-        displayedMarketCap
+        change1h
       ]
     })
     .forEach(record => table.push(record))
