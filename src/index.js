@@ -2,7 +2,6 @@
 const program = require('commander');
 const axios = require('axios');
 const ora = require('ora');
-const cfonts = require('cfonts');
 const Table = require('cli-table2');
 const colors = require('colors');
 const humanize = require('humanize-plus');
@@ -10,7 +9,7 @@ const humanize = require('humanize-plus');
 const list = val => val.split(',')
 
 program
-  .version('0.0.9')
+  .version('0.0.1a')
   .option('-c, --convert [currency]', 'Convert to your fiat currency', 'usd')
   .option('-f, --find [symbol]', 'Find specific coin data with coin symbol (can be a comma seperated list)', list, [])
   .option('-t, --top [index]', 'Show the top coins ranked from 1 - [index] according to the market cap', null)
@@ -47,16 +46,6 @@ const table = new Table({
   colWidths: [6, 14, 15, 15, 15, 20]
 });
 
-cfonts.say('coinmon', {
-  font: 'simple3d',
-  align: 'left',
-  colors: ['yellow'],
-  background: 'Black',
-  letterSpacing: 2,
-  lineHeight: 1,
-  space: true,
-  maxLength: '0'
-});
 const spinner = ora('Loading data').start();
 const sourceUrl = `https://api.coinmarketcap.com/v1/ticker/?limit=${top}&convert=${convert}`
 axios.get(sourceUrl)
