@@ -26,21 +26,21 @@ const top = !isNaN(program.top) && +program.top > 0 ? +program.top : (find.lengt
 const humanizeIsEnabled = program.humanize !== 'false'
 const table = new Table({
   chars: {
-    'top': '-',
-    'top-mid': '-',
-    'top-left': '-',
-    'top-right': '-',
-    'bottom': '-',
-    'bottom-mid': '-',
-    'bottom-left': '-',
-    'bottom-right': '-',
-    'left': '║',
-    'left-mid': '-' ,
-    'mid': '-' ,
-    'mid-mid': '-',
-    'right': '║',
-    'right-mid': '-',
-    'middle': '│'
+    'top': '',
+    'top-mid': '',
+    'top-left': '',
+    'top-right': '',
+    'bottom': '',
+    'bottom-mid': '',
+    'bottom-left': '',
+    'bottom-right': '',
+    'left': '',
+    'left-mid': '' ,
+    'mid': '' ,
+    'mid-mid': '',
+    'right': '',
+    'right-mid': '',
+    'middle': ''
   },
   head: ['Rank', 'Coin', `Price (${convert})`, 'Change (24H)', 'Change (1H)', `Market Cap (${convert})`].map(title => title.yellow),
   colWidths: [6, 14, 15, 15, 15, 20]
