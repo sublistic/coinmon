@@ -62,12 +62,12 @@ axios.get(sourceUrl)
       const symbol = `${record.symbol}`
       const percentChange24h = record.percent_change_24h
       const textChange24h = `${percentChange24h}%`
-      const change24h = percentChange24h? (percentChange24h > 0 ? textChange24h.green : textChange24h.red) : 'NA'
+      const change24h = percentChange24h? (percentChange24h > 0 ? ` ${textChange24h}` : textChange24h) : 'NA'
       const percentChange1h = record.percent_change_1h
       const textChange1h = `${percentChange1h}%`
-      const change1h = percentChange1h ? (percentChange1h > 0 ? textChange1h.green : textChange1h.red) : 'NA'
       const marketCap = record[`market_cap_${convert}`.toLowerCase()];
       const displayedMarketCap = humanizeIsEnabled ? humanize.compactInteger(marketCap, 3) : marketCap;
+      const change1h = percentChange1h ? (percentChange1h > 0 ? ` ${textChange1h}` : textChange1h) : 'NA'
       return [
         record.rank,
         symbol,
