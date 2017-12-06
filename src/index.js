@@ -81,8 +81,9 @@ axios.get(sourceUrl)
   if (table.length === 0) {
     console.log('We are not able to find coins matching your keywords'.red);
   } else {
-    console.log(`Data source from coinmarketcap.com at ${new Date().toLocaleTimeString()}`)
+    console.log('\r');
     console.log(table.toString());
+    console.log(`\n coinmarketcap.com at ${new Date().toLocaleTimeString()} \n`)
   }
 })
 .catch(function (error) {
