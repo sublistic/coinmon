@@ -59,6 +59,7 @@ axios.get(sourceUrl)
       return true
     })
     .map(record => {
+      const symbol = `${record.symbol}`
       const percentChange24h = record.percent_change_24h
       const textChange24h = `${percentChange24h}%`
       const change24h = percentChange24h? (percentChange24h > 0 ? textChange24h.green : textChange24h.red) : 'NA'
@@ -69,7 +70,7 @@ axios.get(sourceUrl)
       const displayedMarketCap = humanizeIsEnabled ? humanize.compactInteger(marketCap, 3) : marketCap;
       return [
         record.rank,
-        `💰  ${record.symbol}`,
+        symbol,
         record[`price_${convert}`.toLowerCase()],
         change24h,
         change1h,
