@@ -16,8 +16,15 @@ All data comes from [coinmarketcap.com](https://coinmarketcap.com/) APIs.
 
 In order to use coinmon, make sure that you have [Node](https://nodejs.org/) version 6.0.0 or higher.
 
+It's simple to run `coinmon` on your local computer.  The following is step-by-step instruction.
+
 ```
-$ npm install -g coinmon
+$ git clone https://github.com/sublistic/coinmon-minimal.git
+$ cd coinmon-minimal
+$ yarn
+$ npm install
+$ npm link
+$ coinmon
 ```
 
 ## Usage
@@ -63,57 +70,19 @@ You can use the `-h` (or `--help`) to find all valid options of coinmon
 $ coinmon -h
 ```
 
+## Example
+
+To see British Pounds and US Dollars for Bitcoin, Ethereum, Litecoin and Dogecoin
+
+````
+$ coinmon -c GBP -u -f BTC,ETH,LTC,DOGE
+````
+
 ## Screenshot
 
+`coinmon -c NZD -u`
+
 <img src="https://raw.githubusercontent.com/sublistic/coinmon-minimal/master/screenshot.png">
-
-## Development
-
-It's simple to run `coinmon` on your local computer.  
-The following is step-by-step instruction.
-
-```
-$ git clone https://github.com/bichenkk/coinmon.git
-$ cd coinmon
-$ yarn
-$ npm install -g
-$ npm link
-$ coinmon
-```
-
-## Docker
-
-### Initial usage
-
-```
-$ docker run --rm -ti jaymoulin/coinmon
-```
-
-You can pass parameters just like `coinmon` binary
-
-```
-$ docker run --rm -ti jaymoulin/coinmon --help
-```
-
-### Local usage
-
-#### Build image
-
-```
-$ docker build -t coinmon .
-```
-
-#### Usage
-
-```
-$ docker run --rm -ti coinmon
-```
-
-You can pass parameters just like `coinmon` binary
-
-```
-$ docker run --rm -ti coinmon --help
-```
 
 ## License
 
