@@ -60,6 +60,10 @@ axios.get(sourceUrl)
     })
     .map(record => {
       const symbol = `${record.symbol}`
+      const priceusd = usd? `${record.price_usd}` : ''
+      const percentChange7d = record.percent_change_7d
+      const textChange7d = `${percentChange7d}%`
+      const change7d = percentChange7d? (percentChange7d > 0 ? ` ${textChange7d}` : textChange7d) : 'NA'
       const percentChange24h = record.percent_change_24h
       const textChange24h = `${percentChange24h}%`
       const change24h = percentChange24h? (percentChange24h > 0 ? ` ${textChange24h}` : textChange24h) : 'NA'
