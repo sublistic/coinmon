@@ -1,14 +1,14 @@
 <p align=center>
-<img src="https://raw.githubusercontent.com/bichenkk/coinmon/master/logo.png">
+<img src="https://raw.githubusercontent.com/sublistic/coinmon-minimal/master/logo.png">
 </p>
 <p align=center>
 <a target="_blank" href="http://nodejs.org/download/" title="Node version"><img src="https://img.shields.io/badge/node.js-%3E=_6.0-green.svg"></a>
 <a target="_blank" href="https://opensource.org/licenses/MIT" title="License: MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
 </p>  
 
-> Minimal cryptocurrency price ticker CLI based on [COINMON](https://github.com/bichenkk/coinmon)
+### Minimal cryptocurrency price ticker CLI forked from the awesome [COINMON](https://github.com/bichenkk/coinmon) by [KK Chen](https://github.com/bichenkk)
 
-Check cryptocurrencies' prices, changes on your console.
+Check cryptocurrency prices and changes from your console.
 
 All data comes from [coinmarketcap.com](https://coinmarketcap.com/) APIs.
 
@@ -65,7 +65,7 @@ $ coinmon -h
 
 ## Screenshot
 
-<img src="https://raw.githubusercontent.com/sublistic/coinmon/minimal/screenshot.png">
+<img src="https://raw.githubusercontent.com/sublistic/coinmon-minimal/master/screenshot.png">
 
 ## Development
 
